@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  apache2:
+    build: apache2
+    environment:
+      - SORMAS_SERVER_URL=sormas-docker-test.com
+    ports:
+      - "443:443"
+      - "80:80"
+    links:
+      - local-keycloak
+
+  local-keycloak:
+    build: keycloak
+    ports:
+      - "8080:8080"
